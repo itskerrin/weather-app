@@ -1,9 +1,4 @@
-// change background
-
-// change color scheme
-
-// get time - if night time change image to a night scheme
-
+// get weather from API
 let weather = {
   getWeather: function (cityName) {
     fetch(
@@ -22,19 +17,43 @@ let weather = {
     const { description, icon } = data.weather[0]; // weather is within an array
     console.log(name, temp, feels_like, description, icon);
 
-    // change html display
+    // change ui
     document.querySelector('.location').innerText = name;
     document.querySelector('.temperature').innerText = Math.round(temp) + '°C';
     document.querySelector('.weather-type').innerText = description;
     document.querySelector('.weather-icon').src =
       'http://openweathermap.org/img/wn/' + icon + '@2x.png';
+
+    // change background img based on weather description
+    if (description.includes('clear')) {
+      document.body.style.backgroundImage = "url('./images/we-clearsky.jpg')";
+    } else if (description.includes('few')) {
+      document.body.style.backgroundImage = "url('./images/we-lcloudy.jpg')";
+    } else if (
+      description.includes('scattered') ||
+      description.includes('overcast')
+    ) {
+      document.body.style.backgroundImage = "url('./images/we-cloudy.jpg')";
+    } else if (description.includes('shower')) {
+      document.body.style.backgroundImage = "url('./images/we-drizzle.jpg')";
+    } else if (description.includes('rain')) {
+      document.body.style.backgroundImage = "url('./images/we-rain.jpg')";
+    } else if (description.includes('thunderstorm')) {
+      document.body.style.backgroundImage = "url('./images/we-storm.jpg')";
+    } else if (description.includes('snow')) {
+      document.body.style.backgroundImage = "url('./images/we-snow.jpg')";
+    } else if (description.includes('mist')) {
+      document.body.style.backgroundImage = "url('./images/we-fog.jpg')";
+    }
   },
 
+  // search form value
   search: function () {
     this.getWeather(document.querySelector('.city-search').value);
   },
 };
 
+// Event listeners - form search
 document.querySelector('.search-btn').addEventListener('click', (e) => {
   e.preventDefault();
   weather.search();
@@ -43,14 +62,3 @@ document.querySelector('.search-btn').addEventListener('click', (e) => {
 document.querySelector('.search-btn').addEventListener('keyup', (e) => {
   e.key ? 'Enter' || e.keyCode === 13 : e.preventDefault(), weather.search();
 });
-
-// Get time
-
-const date = new Date();
-const time = date.getHours();
-console.log(time);
-
-let background = (document.body.style.backgroundImage =
-  "url('./images/we-night.jpg')");
-
-// Change background

@@ -1,11 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 body {
   background-image: url(./images/we-cloudy.jpg);
   background-size: cover;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 3px;
 }
 
-.weather-container {
+/* Main */
+
+.card-container {
+  margin: 0 auto;
+  margin-top: 30vh;
+  max-width: 400px;
+}
+
+.weather-card {
+  text-align: center;
+  color: white;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+  border: 1px solid transparent;
+  border-radius: 30px;
+}
+
+.location {
+  margin-top: 40px;
+}
+
+/* Form */
+
+form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: antiquewhite;
+}
+
+input {
+  background: none;
+  color: white;
+  padding: 10px 13px;
+  font-family: 'Roboto', sans-serif;
+  width: 80%;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(42, 42, 61, 0.692);
+  border-bottom-width: 2px;
+}
+
+input::placeholder {
+  font-family: 'Roboto', sans-serif;
+  /* color: rgba(42, 42, 61, 0.692); */
+  color: white;
+  letter-spacing: 2px;
+}
+
+button {
+  background: rgba(42, 42, 61, 0.692);
+  font-family: inherit;
+  letter-spacing: 2px;
+  cursor: pointer;
+  color: aliceblue;
+  margin-left: 15px;
+  padding: 8px 15px;
+  border: solid 1px rgba(42, 42, 61, 0.753);
+  border-radius: 10px;
 }
